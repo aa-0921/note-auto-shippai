@@ -1,8 +1,8 @@
 name: Twitter Post Amazon Wishlist Ranking
 
 on:
-  schedule:
-    - cron: '0 4,10,16,22 * * *'  # 4時、10時、16時、22時（UTC）、6時間おきに4回実行、交互実行
+  # schedule:
+  #   - cron: '0 4,10,16,22 * * *'  # 4時、10時、16時、22時（UTC）、6時間おきに4回実行、交互実行
   workflow_dispatch:
     inputs:
       dryrun:

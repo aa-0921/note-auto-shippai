@@ -1,8 +1,8 @@
 name: Twitter Post Follower Growth
 
 on:
-  schedule:
-    - cron: '0 18,0,6,12 * * *'  # JST 3時、9時、15時、21時（UTC 18時、0時、6時、12時）、6時間おきに4回実行
+  # schedule:
+  #   - cron: '0 18,0,6,12 * * *'  # JST 3時、9時、15時、21時（UTC 18時、0時、6時、12時）、6時間おきに4回実行
   workflow_dispatch:
     inputs:
       dryrun:

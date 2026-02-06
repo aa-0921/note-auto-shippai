@@ -1,8 +1,8 @@
 name: Twitter Post Amazon Ranking
 
 on:
-  schedule:
-    - cron: '0 1,7,13,19 * * *'  # 1時、7時、13時、19時（UTC）、6時間おきに4回実行
+  # schedule:
+  #   - cron: '0 1,7,13,19 * * *'  # 1時、7時、13時、19時（UTC）、6時間おきに4回実行
   workflow_dispatch:
     inputs:
       dryrun:
