@@ -233,6 +233,8 @@ export { affiliateConfig, affiliateLinks };
       background: wantsBackground,
       // 記事内容配列（A）が存在する場合はそれを渡す（存在しない場合は topics と patterns を使用）
       articleContents: articleContentsArray,
+      // 有料セクションの最低文字数（アカウントごとにここを書き換え可能。未指定時は core 側で 10000）
+      minPaidSectionLength: 10000,
       topics,
       patterns,
       paidEnabled,
