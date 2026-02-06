@@ -1,0 +1,58 @@
+{
+  "name": "note-auto-hakushikisan",
+  "version": "1.0.0",
+  "description": "「 🏅恋愛・人間関係カウンセラーRisa🏅 」note自動化スクリプト",
+  "type": "module",
+  "main": "scripts/autoCreateAndDraftNote.js",
+  "scripts": {
+    "test": "echo 'No tests configured'",
+    "start": "node scripts/autoCreateAndDraftNote.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "autoCreateAndDraftNote": "node scripts/autoCreateAndDraftNote.js",
+    "autoPublishNotes": "node scripts/autoPublishNotes.js",
+    "likeUnlikedNotes": "node scripts/likeUnlikedNotes.js",
+    "likeNotesByUrl": "node scripts/likeNotesByUrl.js",
+    "followFromArticles": "node scripts/followFromArticles.js",
+    "noteAutoDraftAndSheetUpdate": "node scripts/noteAutoDraftAndSheetUpdate.js",
+    "likeAsGuestByAccounts": "node scripts/likeAsGuestByAccounts.js",
+    "createAmazonTopSellersRankingNote": "node scripts/createAmazonTopSellersRankingNote.js",
+    "twitterPostAmazonRanking": "node scripts/twitterPostAmazonRanking.js",
+    "postArticleLinkListToNote": "node scripts/postArticleLinkListToNote.js"
+  },
+  "keywords": [
+    "note",
+    "automation",
+    "hakushiki",
+    "love",
+    "relationship"
+  ],
+  "author": "aa-0921",
+  "license": "MIT",
+  "dependencies": {
+    "@aa-0921/note-auto-core": "file:../note-auto-core",
+    "axios": "^1.12.2",
+    "cheerio": "^1.1.2",
+    "dotenv": "^16.6.1",
+    "js-yaml": "^4.1.0",
+    "puppeteer": "^24.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aa-0921/note-auto-hakushikisan.git"
+  }
+}

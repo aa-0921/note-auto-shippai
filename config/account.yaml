@@ -1,0 +1,155 @@
+# config/account.yaml
+# 何でも知ってる博識さんアカウントの設定
+
+genre: 'note-auto-hakushikisan'
+locale: 'ja-JP'
+posting:
+  time_window: ['09:00', '11:00']
+  days: [Mon, Tue, Wed, Thu, Fri]
+ai:
+  provider: 'openrouter'
+  # model: 'deepseek/deepseek-chat-v3.1:free'
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  # ↓から無料のAPIを探す
+  # https://openrouter.ai/models?max_price=0
+  # ーーーーーーーーーーーーーーーーーーーーーー
+
+  # ↓早いし、内容も問題なさそう
+  # 2025/06/25 なぜか認証エラーで使えなくなった
+  # 2025/10/12 使えるクオリティもまあまあ
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  # meta-llama/llama-4-maverick-17b-128e-instruct:free requires moderation on Meta. 
+  # Your input was flagged for "misc". 
+  # No credits were charged.
+  # ーーーーーーーーーーーーー
+  # Metaのコンテンツモデレーションシステムが入力をブロック
+  # フラグされた理由: "misc"（その他/分類不明）
+  # →つまりmetaの検査にプロンプトが引っかかっている
+
+  # const MODEL = 'meta-llama/llama-4-maverick:free';
+
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+  # ↓少し遅いがまあまあ文章作成能力も高そう
+  # const MODEL: 'deepseek/deepseek-chat-v3-0324:free'
+
+  # ↓記事は作れるが、ちょっとクオリティが低いかも（ランキング2位までしか作れない）
+  # export const MODEL = 'x-ai/grok-4-fast:free'
+
+  # ↓記事のクオリティが良く、使える
+  # const MODEL: 'deepseek/deepseek-chat-v3.1:free'
+
+  # const MODEL = 'google/gemini-pro'; // 必要に応じて変更
+  # const MODEL = 'google/gemini-2.5-pro-exp-03-25';
+
+  # const MODEL = 'google/gemini-2.0-flash-exp:free';
+  # ↓気になる
+  # nvidia/nemotron-nano-9b-v2:free
+
+
+  # 文字が途中で切れるが、クオリティは良さそう→出力tokenを増やすとうまくいった
+  # model: 'z-ai/glm-4.5-air:free'
+
+
+  # ----すべて同じmodelを指定する場合↓model （これを指定する場合はmodelsは不要）-------------------------------------
+
+  # model: 'meituan/longcat-flash-chat'
+
+  # ↓記事のクオリティが最悪
+  # model: 'nvidia/nemotron-nano-9b-v2:free'
+
+  # 404！なくなった？→使えた（20251010）クオリティ低くなった？？
+  # model: 'deepseek/deepseek-chat-v3.1:free'
+
+  # 文書のクオリティが少し悪い・429に引っかかりにくいかも？
+  # model: 'alibaba/tongyi-deepresearch-30b-a3b:free'
+
+  # model: 'openai/gpt-oss-20b:free'
+  # ↓429に引っかかりにくいかも？
+  # 2025/10/12 記事のクオリティまあまあ
+  # 文字が途中で切れるが、クオリティは良さそう→出力tokenを増やすとうまくいった
+  model: 'z-ai/glm-4.5-air:free'
+
+  # model: 'deepseek/deepseek-chat-v3.1:free'
+
+  # model: 'deepseek/deepseek-chat-v3-0324:free'
+  # model: 'moonshotai/kimi-k2:free'
+  # model: 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free'
+  # model: 'google/gemma-3n-e2b-it:free'
+  # model: 'qwen/qwen3-coder:free'
+  # model: 'tencent/hunyuan-a13b-instruct:free'
+  # model: 'tngtech/deepseek-r1t2-chimera:free'
+  # model: 'meta-llama/llama-4-maverick:free'
+  # model: 'qwen/qwen3-vl-8b-instruct'
+  # model: 'qwen/qwen3-vl-30b-a3b-instruct'
+  # model: 'qwen/qwen3-vl-235b-a22b-instruct'
+  # model: 'deepseek/deepseek-r1-0528:free'
+  # model: 'meituan/longcat-flash-chat:free'
+
+
+  # ----記事作成・リライト・タグ生成それぞれで別のmodelを指定する場合↓models（これを指定する場合はmodel は不要）-----
+  # 新しい個別モデル指定
+  # models:
+  #   article: 'meituan/longcat-flash-chat' # 記事作成用
+  #   rewrite: 'meituan/longcat-flash-chat' # リライト用
+  #   tags: 'meituan/longcat-flash-chat' # タグ生成用
+    # ---------------------------------------------------------
+  # フォールバックモデル設定（429エラー時）
+  # fallback_models:
+  #   article: 'x-ai/grok-4-fast:free'
+  #   rewrite: 'x-ai/grok-4-fast:free'
+  #   tags: 'x-ai/grok-4-fast:free'
+
+  # または全機能共通のフォールバックモデル
+  # fallback_model: 'nvidia/nemotron-nano-9b-v2:free'
+  # No endpoints found for google/gemini-2.5-pro-exp-03-25 になりがち
+
+  # なくなった？ 2026/01/21
+  # fallback_model: 'google/gemini-2.5-pro-exp-03-25'
+  fallback_model: 'meta-llama/llama-3.3-70b-instruct:free'
+    # ---------------------------------------------------------
+  # ーーcore側の実装参考ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  # 各機能用のモデル設定（個別指定可能）
+  # this.models = {
+  #   記事作成用モデル
+  #   article: this.config.ai?.models?.article || this.config.ai?.model || 'deepseek/deepseek-chat-v3-0324:free',
+  #   リライト用モデル
+  #   rewrite: this.config.ai?.models?.rewrite || this.config.ai?.model || 'deepseek/deepseek-chat-v3-0324:free',
+  #   タグ生成用モデル
+  #   tags: this.config.ai?.models?.tags || this.config.ai?.model || 'deepseek/deepseek-chat-v3-0324:free'
+  # };
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  #   429エラー時のフォールバックモデル設定
+  #   this.fallbackModels = {
+  #     記事作成用フォールバックモデル
+  #     article: this.config.ai?.fallback_models?.article || this.config.ai?.fallback_model || 'x-ai/grok-4-fast:free',
+  #     リライト用フォールバックモデル
+  #     rewrite: this.config.ai?.fallback_models?.rewrite || this.config.ai?.fallback_model || 'x-ai/grok-4-fast:free',
+  #     タグ生成用フォールバックモデル
+  #     tags: this.config.ai?.fallback_models?.tags || this.config.ai?.fallback_model || 'x-ai/grok-4-fast:free'
+  #   };
+
+  # ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  temperature: 0.7
+  # max_tokens: 1200
+  max_tokens: 3000
+note:
+  login_method: 'email_password'
+  cookie_secret_name: 'NOTE_COOKIE'
+sheets:
+  enabled: true
+  doc_id: ''
+  worksheet: 'posts'
+overrides:
+  seasonal_topic: '恋愛・人間関係'
+  tags:
+    [
+      '#人間関係',
+      '#メンタル',
+      '#自己肯定感',
+      '#引き寄せ',
+      '#引き寄せの法則',
+      '#裏技',
+      '#PR',
+    ]

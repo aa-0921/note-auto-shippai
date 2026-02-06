@@ -1,0 +1,46 @@
+name: Auto Publish Notes
+
+on:
+  # schedule:
+  #   # JST 6:00〜24:00の間で1日8回実行（2時間15分間隔、一時的に1日4回に変更）
+  #   - cron: '0 21 * * *'   # JST 06:00
+  #   - cron: '15 23 * * *'  # JST 08:15（一時的にコメントアウト）
+  #   - cron: '30 1 * * *'   # JST 10:30
+  #   - cron: '45 3 * * *'   # JST 12:45（一時的にコメントアウト）
+  #   - cron: '0 6 * * *'    # JST 15:00
+  #   - cron: '15 8 * * *'   # JST 17:15（一時的にコメントアウト）
+  #   - cron: '30 10 * * *'  # JST 19:30
+  #   - cron: '45 12 * * *'  # JST 21:45（一時的にコメントアウト）
+  #   - cron: '0 15 * * *'   # JST 24:00 (翌日00:00)（一時的にコメントアウト）
+  workflow_dispatch:
+
+jobs:
+  auto-publish-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout note-auto-core
+        uses: actions/checkout@v4
+        with:
+          repository: aa-0921/note-auto-core
+          path: note-auto-core
+          ref: main
+          token: ${{ secrets.CORE_REPO_TOKEN }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install dependencies
+        run: |
+          # note-auto-coreの依存関係をインストール
+          cd note-auto-core && npm install
+          cd ..
+          # ローカルパッケージを直接参照してインストール
+          npm install ./note-auto-core
+      - name: Run autoPublishNotes.js
+        env:
+          NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
+          NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
+        run: node scripts/autoPublishNotes.js
